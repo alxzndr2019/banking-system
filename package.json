@@ -1,0 +1,35 @@
+{
+  "name": "banking-system",
+  "version": "1.0.0",
+  "description": "A Banking System Built With Node.js",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alxzndr2019/banking-system.git"
+  },
+  "keywords": [
+    "banking",
+    "finance",
+    "fintech"
+  ],
+  "author": "Alex Omiunu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alxzndr2019/banking-system/issues"
+  },
+  "homepage": "https://github.com/alxzndr2019/banking-system#readme",
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongodb": "^6.12.0",
+    "pg": "^8.13.1"
+  }
+}
