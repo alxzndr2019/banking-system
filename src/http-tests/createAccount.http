@@ -1,6 +1,7 @@
 POST http://localhost:3000/api/accounts HTTP/1.1
 content-type: application/json
 
-{
-  "customerId": "64b5c8fa3d4e2a5f3b1e04d1"
-}
+
+  {
+    "customerId": "6789158e6b10c14cccf22ef7"
+  }

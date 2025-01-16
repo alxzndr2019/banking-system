@@ -1,5 +1,6 @@
 import express from "express";
 import bankingRoutes from "./presentation/routes/bankingRoutes";
+import authRoutes from "./presentation/routes/authRoutes";
 
 import { connectToDatabase } from "./infrastructure/database/mongoDB";
 // import "dotenv/config";
@@ -7,6 +8,7 @@ import { connectToDatabase } from "./infrastructure/database/mongoDB";
 const app = express();
 app.use(express.json());
 app.use("/api", bankingRoutes);
+app.use("/api", authRoutes);
 
 const PORT = 3000;
 
