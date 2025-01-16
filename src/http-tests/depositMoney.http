@@ -4,5 +4,5 @@ content-type: application/json
 
   {
     "accountId": "67891723e3e92784ec6226d8",
-    "amount": 1000
+    "amount": 20
   }

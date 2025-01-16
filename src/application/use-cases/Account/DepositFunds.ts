@@ -1,6 +1,7 @@
 import { IAccountRepository } from "../../interfaces/IAccountRepository";
 import { ITransactionRepository } from "../../interfaces/ITransactionRepository";
 import { Transaction } from "../../../domain/entities/Transaction";
+import logger from "../../../infrastructure/utils/logger";
 
 export class DepositFunds {
   constructor(
@@ -25,5 +26,14 @@ export class DepositFunds {
       new Date()
     );
     await this.transactionRepository.create(transaction);
+    //log
+    logger.info({
+      message: "Transaction completed",
+      transactionId: transaction.id,
+      accountId: transaction.accountId,
+      type: transaction.type,
+      amount: transaction.amount,
+      timestamp: transaction.createdAt,
+    });
   }
 }
