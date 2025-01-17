@@ -1,0 +1,9 @@
+POST http://localhost:3000/api/accounts/transfer HTTP/1.1
+content-type: application/json
+
+
+  {
+    "sourceAccountId": "67891723e3e92784ec6226d8",
+    "destinationAccountId": "6789167f6b10c14cccf22efa",
+    "amount": 20000
+  }
