@@ -7,5 +7,9 @@ router.post("/accounts", BankingController.createAccount);
 router.post("/accounts/deposit", BankingController.depositFunds);
 router.post("/accounts/withdraw", BankingController.withdrawFunds);
 router.post("/accounts/transfer", BankingController.transferFunds);
+router.get(
+  "/accounts/:accountId/balance",
+  BankingController.viewAccountBalance
+);
 
 export default router;
