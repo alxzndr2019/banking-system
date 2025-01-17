@@ -7,6 +7,7 @@ import { ViewAccountBalance } from "../../application/use-cases/Account/ViewAcco
 import { MongoDBAccountRepository } from "../database/repositories/MongoAccountRepository";
 import { MongoDBCustomerRepository } from "../database/repositories/MongoCustomerRepository";
 import { MongoTransactionRepository } from "../database/repositories/MongoTransactionRepository";
+import { DisputeATransaction } from "../../application/use-cases/Transaction/DisputeATransaction";
 const transactionRepository = new MongoTransactionRepository();
 const accountRepository = new MongoDBAccountRepository();
 const customerRepository = new MongoDBCustomerRepository();
@@ -77,6 +78,18 @@ export class BankingController {
         req.params.accountId
       );
       res.status(200).json({ balance });
+    } catch (error) {
+      res.status(500).json({ message: (error as Error).message });
+    }
+  }
+
+  static async disputeATransaction(req: Request, res: Response) {
+    try {
+      const disputeATransactionUseCase = new DisputeATransaction(
+        transactionRepository
+      );
+      await disputeATransactionUseCase.execute(req.params.transactionId);
+      res.status(200).send("Transaction disputed");
     } catch (error) {
       res.status(500).json({ message: (error as Error).message });
     }

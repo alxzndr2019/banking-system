@@ -1,0 +1,4 @@
+GET http://localhost:3000/api/transactions/6789c420f624f7662f62d9f6/dispute HTTP/1.1
+content-type: application/json
+
+

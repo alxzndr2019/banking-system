@@ -11,5 +11,9 @@ router.get(
   "/accounts/:accountId/balance",
   BankingController.viewAccountBalance
 );
+router.get(
+  "/transactions/:transactionId/dispute",
+  BankingController.disputeATransaction
+);
 
 export default router;

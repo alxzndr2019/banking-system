@@ -25,8 +25,9 @@ export class WithdrawFunds {
     const transaction = new Transaction(
       crypto.randomUUID(),
       accountId,
-      "debit",
       amount,
+      "debit",
+      "completed",
       new Date()
     );
     await this.transactionRepository.create(transaction);

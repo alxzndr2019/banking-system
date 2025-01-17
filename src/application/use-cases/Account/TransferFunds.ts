@@ -41,8 +41,9 @@ export class TransferFunds {
     const transaction = new Transaction(
       crypto.randomUUID(),
       sourceAccountId,
-      "debit",
       amount,
+      "debit",
+      "completed",
       new Date()
     );
 
@@ -60,8 +61,9 @@ export class TransferFunds {
     const transaction2 = new Transaction(
       crypto.randomUUID(),
       destinationAccountId,
-      "credit",
       amount,
+      "credit",
+      "completed",
       new Date()
     );
 

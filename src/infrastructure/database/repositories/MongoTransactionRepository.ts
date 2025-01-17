@@ -16,13 +16,24 @@ export class MongoTransactionRepository implements ITransactionRepository {
     const transactionDocs = await TransactionModel.find({ accountId }).exec();
     return transactionDocs.map(this.toDomain);
   }
+  async findById(id: string): Promise<Transaction | null> {
+    const transactionDoc = await TransactionModel.findById(id).exec();
+    if (!transactionDoc) return null;
+
+    return this.toDomain(transactionDoc);
+  }
+
+  async disputeTransaction(id: string): Promise<void> {
+    await TransactionModel.findByIdAndUpdate(id, { status: "disputed" }).exec();
+  }
 
   private toDomain(transactionDoc: ITransactionDocument): Transaction {
     return new Transaction(
-      transactionDoc._id.toString(),
+      transactionDoc._id,
       transactionDoc.accountId,
-      transactionDoc.type,
       transactionDoc.amount,
+      transactionDoc.type,
+      transactionDoc.status,
       transactionDoc.createdAt
     );
   }

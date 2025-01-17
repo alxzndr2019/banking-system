@@ -21,8 +21,9 @@ export class DepositFunds {
     const transaction = new Transaction(
       crypto.randomUUID(),
       accountId,
-      "credit",
       amount,
+      "credit",
+      "completed",
       new Date()
     );
     await this.transactionRepository.create(transaction);
