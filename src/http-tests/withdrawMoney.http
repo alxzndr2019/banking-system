@@ -1,0 +1,8 @@
+POST http://localhost:3000/api/accounts/withdraw HTTP/1.1
+content-type: application/json
+
+
+  {
+    "accountId": "67891723e3e92784ec6226d8",
+    "amount": 2000
+  }

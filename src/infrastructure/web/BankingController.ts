@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { CreateAccount } from "../../application/use-cases/Account/CreateAccount";
 import { DepositFunds } from "../../application/use-cases/Account/DepositFunds";
+import { WithdrawFunds } from "../../application/use-cases/Account/WithdrawFunds";
 import { MongoDBAccountRepository } from "../database/repositories/MongoAccountRepository";
 import { MongoDBCustomerRepository } from "../database/repositories/MongoCustomerRepository";
 import { MongoTransactionRepository } from "../database/repositories/MongoTransactionRepository";
@@ -30,6 +31,19 @@ export class BankingController {
     try {
       await depositFundsUseCase.execute(req.body.accountId, req.body.amount);
       res.status(200).send("Deposit successful");
+    } catch (error) {
+      res.status(500).json({ message: (error as Error).message });
+    }
+  }
+
+  static async withdrawFunds(req: Request, res: Response) {
+    try {
+      const withdrawFundsUseCase = new WithdrawFunds(
+        accountRepository,
+        transactionRepository
+      );
+      await withdrawFundsUseCase.execute(req.body.accountId, req.body.amount);
+      res.status(200).send("Withdrawal successful");
     } catch (error) {
       res.status(500).json({ message: (error as Error).message });
     }
